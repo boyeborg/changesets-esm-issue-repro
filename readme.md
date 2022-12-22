@@ -10,3 +10,5 @@ TypeError: readChangesets is not a function
 ```
 
 Workaround exists. See: `workaround.js`.
+
+A patch to fix the issue also exists. Run: `npx patch-package` then `node index.js` works as expected.

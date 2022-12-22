@@ -1,0 +1,41 @@
+diff --git a/node_modules/@changesets/read/dist/read.esm.js b/node_modules/@changesets/read/dist/read.esm.mjs
+similarity index 98%
+rename from node_modules/@changesets/read/dist/read.esm.js
+rename to node_modules/@changesets/read/dist/read.esm.mjs
+index 961666d..f96814f 100644
+--- a/node_modules/@changesets/read/dist/read.esm.js
++++ b/node_modules/@changesets/read/dist/read.esm.mjs
+@@ -1,4 +1,4 @@
+-import fs, { lstat, readFile, readJson } from 'fs-extra';
++import fs from 'fs-extra';
+ import path from 'path';
+ import parse from '@changesets/parse';
+ import { getChangedChangesetFilesSinceRef } from '@changesets/git';
+@@ -6,6 +6,8 @@ import chalk from 'chalk';
+ import pFilter from 'p-filter';
+ import { warn } from '@changesets/logger';
+ 
++const { lstat, readFile, readJson } = fs;
++
+ function _defineProperty(obj, key, value) {
+   if (key in obj) {
+     Object.defineProperty(obj, key, {
+diff --git a/node_modules/@changesets/read/package.json b/node_modules/@changesets/read/package.json
+index 126ac25..0a93876 100644
+--- a/node_modules/@changesets/read/package.json
++++ b/node_modules/@changesets/read/package.json
+@@ -3,7 +3,13 @@
+   "version": "0.5.9",
+   "description": "Read changesets from disc, and return the information as JSON",
+   "main": "dist/read.cjs.js",
+-  "module": "dist/read.esm.js",
++  "module": "dist/read.esm.mjs",
++  "exports": {
++    ".": {
++      "require": "./dist/read.cjs.js",
++      "import": "./dist/read.esm.mjs"
++    }
++  },
+   "license": "MIT",
+   "repository": "https://github.com/changesets/changesets/tree/main/packages/read",
+   "dependencies": {
