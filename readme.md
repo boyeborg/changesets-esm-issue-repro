@@ -1,5 +1,7 @@
 # changesets esm issue reproduction
 
+See: https://github.com/changesets/changesets/issues/1046
+
 ## Setup
 
 Install dependencies:
